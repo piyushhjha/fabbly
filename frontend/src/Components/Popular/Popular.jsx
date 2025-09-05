@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './Popular.css'
 import Item from '../Items/Item'
-import API_BASE_URL from "./api";
+import API_BASE_URL from "../api";
 
 const Popular = () => {
 
