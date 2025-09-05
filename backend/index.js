@@ -8,7 +8,7 @@ const path = require("path");
 const cors = require("cors");
 const { log } = require("console");
 const { type } = require("os");
-const { use } = require("react");
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -247,7 +247,8 @@ app.post('/addtocart',fetchUser, async(req,res)=>{
     console.log("added..",req.body.itemId)
     let userData = await Users.findOne({_id:req.user.id});
     userData.cartData[req.body.itemId] += 1;
-    await Users.findOneAndUpdate({_id:req.user.id},{cartData:use.cartData});
+    await Users.findOneAndUpdate({_id:req.user.id},{cartData:userData.cartData});
+
     res.send("Product added to cart");
 
 })
@@ -258,7 +259,9 @@ app.post('/removefromcart',fetchUser,async (req,res)=>{
     let userData = await Users.findOne({_id:req.user.id});
     if(userData.cartData[req.body.itemId]>0)
     userData.cartData[req.body.itemId] -= 1;
-    await Users.findOneAndUpdate({_id:req.user.id},{cartData:use.cartData});
+    await Users.findOneAndUpdate({_id:req.user.id},{cartData:userData.cartData});
+
+
     res.send("Removedd..");
 })
 
