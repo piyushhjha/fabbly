@@ -17,7 +17,7 @@ useEffect(()=>{
 },[])
 
 const remove_product = async (id)=>{
-  await fetch (`${API_BASE_URL}`/removeproduct',{
+  await fetch (`${API_BASE_URL}/removeproduct`,{
     method: 'POST',
     headers: {
       Accept : 'application/json',
