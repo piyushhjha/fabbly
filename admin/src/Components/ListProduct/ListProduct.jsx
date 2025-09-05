@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import './ListProduct.css'
 import cross_icon from '../../assets/cross_icon.png'
+import API_BASE_URL from "../../api";
+
 
 const ListProduct = () => {
 
 const [allproducts, setAllProducts]=useState([]);
 
 const fetchInfo = async ()=>{
-  await fetch('http://localhost:4000/allproducts').then((res)=>res.json()).then((data)=>{setAllProducts(data)});
+  await fetch(`${API_BASE_URL}/allproducts`).then((res)=>res.json()).then((data)=>{setAllProducts(data)});
 
 }
 useEffect(()=>{
@@ -15,7 +17,7 @@ useEffect(()=>{
 },[])
 
 const remove_product = async (id)=>{
-  await fetch ('http://localhost:4000/removeproduct',{
+  await fetch (`${API_BASE_URL}`/removeproduct',{
     method: 'POST',
     headers: {
       Accept : 'application/json',
