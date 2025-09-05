@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './CSS/LoginSignup.css'
 import { data } from 'react-router-dom';
-import API_BASE_URL from "./api";
+import API_BASE_URL from "../api";
 
 const LoginSignup = () => {
 const [state,setState] = useState("Login");
