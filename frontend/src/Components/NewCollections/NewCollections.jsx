@@ -1,4 +1,4 @@
-import API_BASE_URL from "./api";
+import API_BASE_URL from "../api";
 import React, { useEffect, useState } from 'react'
 import './NewCollections.css'
 import Item from '../Items/Item'
