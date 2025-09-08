@@ -35,14 +35,16 @@ const storage = multer.diskStorage({
 const upload = multer({storage:storage})
 
 // creating upload end point  for images 
-app.use('/images',express.static('Upload/images'))
+app.use('/images', express.static(path.join(__dirname, 'Upload/images')));
 
-app.post("/upload", upload.single('product'),(req,res)=>{
+app.post("/upload", upload.single('product'), (req, res) => {
+    const baseUrl = process.env.BASE_URL || `http://localhost:${port}`;
     res.json({
-        success:1,
-        image_url: `http://localhost:${port}/images/${req.file.filename}`
-    })
-})
+        success: 1,
+        image_url: `${baseUrl}/images/${req.file.filename}`
+    });
+});
+
 
 // schema for products
 
